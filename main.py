@@ -9,7 +9,7 @@ app=FastAPI()
 
 app.include_router(schoolAdministrationController.router)
 
-origins=['https://localhost:3000']
+origins=['https://school-administor-backend.vercel.app/']
 
 app.add_middleware(
     CORSMiddleware,
