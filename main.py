@@ -9,7 +9,7 @@ app=FastAPI()
 
 app.include_router(schoolAdministrationController.router)
 
-origins=['https://school-administor-backend.vercel.app/']
+origins=['*']
 
 app.add_middleware(
     CORSMiddleware,
@@ -19,14 +19,11 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
-
-
 @app.exception_handler(RequestValidationError)
 async def validation_exception_handler(request: Request, exc: RequestValidationError):
     error_details = []
     for error in exc.errors():
         if (error["input"]==None):
-             print(error,error["input"],"HHHH")
              error_detail = {
                 "type": error["type"],
                 "loc": error["loc"],
